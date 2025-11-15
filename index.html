@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manjunath C — Portfolio</title>
+
+  <!-- Optional: Google font (uncomment if you want) -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="site-header" class="nav-wrap">
+    <div class="nav-inner">
+      <a class="brand" href="#home">My Portfolio</a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#experience">Experience</a></li>
+          <li><a class="nav-link" href="#education">Education</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
+          <a class="btn-resume" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-photo">
+          <a href="https://www.linkedin.com/in/manjunath-c-shekar-51341a2a3/" target="_blank" rel="noopener"><img src="me.png" alt="Manjunath C"/></a>
+        </div>
+        <div class="hero-text">
+        <h1>Hello — I'm <strong>Manjunath C</strong></h1>
+        <p class="hero-sub">E</p>
+        <a class="cta" href="#projects">See Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="experience" class="card-row">
+      <h2>Experience</h2>
+      <a href="/portfolio/Experience.html">
+        <img src="exp.png" alt="Experience" height="100" />
+      </a>
+    </section>
+
+    <section id="education" class="card-row">
+      <h2>Education</h2>
+      <a href="/portfolio/Education.html">
+        <img src="edu.png" alt="Education" height="100" />
+      </a>
+    </section>
+
+    <section id="projects" class="card-row">
+      <h2>Projects</h2>
+      <a href="/portfolio/Projects.html">
+        <img src="proj.png" alt="Projects" height="100" />
+      </a>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact</h3>
+        <p>I'm open for internships, collaborations, and mentoring. Reach out!</p>
+        <ul class="social-list">
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/manjunath-c-shekar-51341a2a3/" target="_blank" rel="noopener">My profile</a></li>
+          <li>GitHub: <a href="https://github.com/manjunathcshekar" target="_blank" rel="noopener">@manjunathcshekar</a></li>
+          <li>Email: <a href="mailto:manjunathc349@gmail.com">manjunathc349@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="contact-form">
+        <form action="/action.php" method="post" autocomplete="off">
+          <label for="name" class="sr-only">Name or Email</label>
+          <input id="name" name="name" type="text" placeholder="Name or Email" required />
+
+          <label for="message" class="sr-only">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Message / Query" required></textarea>
+
+          <button type="submit" class="btn-submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <small>© <span id="year"></span> Manjunath C — Built with HTML & CSS</small>
+    </div>
+  </footer>
+
+  <!-- Tiny JS -->
+  <script>
+    (function () {
+      const header = document.getElementById('site-header');
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      const themeBtn = document.getElementById('theme-toggle');
+
+      // Mobile menu toggle
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      // Theme toggle (simple)
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') document.documentElement.classList.add('dark');
+      themeBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+
+      // Scrolled state + simple scrollspy
+      const links = document.querySelectorAll('.nav-link');
+      const onScroll = () => {
+        if (window.scrollY > 18) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+
+        links.forEach(a => {
+          const id = a.getAttribute('href');
+          if (!id || !id.startsWith('#')) return;
+          const section = document.querySelector(id);
+          if (!section) return;
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 90 && rect.bottom > 120) a.classList.add('active');
+          else a.classList.remove('active');
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // populate year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
