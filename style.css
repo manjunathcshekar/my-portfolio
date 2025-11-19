@@ -3,8 +3,11 @@
 html,body{height:100%}
 body{
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  color:#111;background:#f7f9fb;line-height:1.45;
+  color:#111;background:linear-gradient(to bottom, #ffffff 0%, #fff5f5 100%);line-height:1.45;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+.dark body{
+  background:linear-gradient(to bottom, #1a1a2e 0%, #0f1724 100%);
 }
 
 
@@ -72,12 +75,14 @@ body{
 /* HERO */
 .hero{
   min-height:64vh;display:flex;align-items:center;justify-content:center;
-  background-image: url("bg.png");
-  background-size:cover;background-position:center;
+  background: linear-gradient(135deg, #ff6b6b 0%, #f06767 50%, #ffffff 100%);
   padding-top:var(--nav-height);
-  margin-top: calc(var(--nav-height) * -1); /* Pull hero up behind navbar */
+  margin-top: calc(var(--nav-height) * -1);
 }
-/* .hero-inner{max-width:980px;text-align:left;padding:60px;color:#fff;text-shadow:0 6px 18px rgba(2,6,23,0.45)} */
+.dark .hero{
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 50%, #1a1a2e 100%);
+}
+
 .hero-content{
     display: flex;
     align-items: center;
@@ -85,36 +90,48 @@ body{
     padding:40px;
 }
 .hero-photo img {
-  width: 180px;      /* size of your photo */
-  height: 180px;     /* keep square for round crop */
-  object-fit: cover; /* keeps face centered */
-  border-radius: 50%; /* makes your photo round */
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  border: 3px solid rgba(255,255,255,0.3);
+  border: 3px solid rgba(255,255,255,0.5);
 }
 .hero-photo:hover img {
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  border-color: rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.8);
   transition: all 0.3s ease;
-    
 }
-.hero-text h1{font-size:2.4rem;margin-bottom:12px;color: #f1f1f1;}
+.hero-text h1{font-size:2.4rem;margin-bottom:12px;color: #1a1a2e;}
+.dark .hero-text h1{color: #fff;}
 .hero-text p {
-  color: #f1f1f1;
+  color: #2c3e50;
+}
+.dark .hero-text p {
+  color: #e0e0e0;
 }
 .hero-sub{opacity:0.95;margin-bottom:18px;font-size:1.05rem}
-.cta{display:inline-block;padding:10px 16px;border-radius:10px;background:rgba(0,0,0,0.25);text-decoration:none;color:#fff;font-weight:600}
+.cta{display:inline-block;padding:10px 16px;border-radius:10px;background:rgba(0,0,0,0.15);text-decoration:none;color:#1a1a2e;font-weight:600;border:2px solid rgba(0,0,0,0.2)}
+.cta:hover{background:rgba(0,0,0,0.25);transform:translateY(-2px)}
+.dark .cta{color:#fff;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3)}
+.dark .cta:hover{background:rgba(255,255,255,0.25)}
 
 /* cards/sections */
 main{max-width:1100px;margin:24px auto;padding:0 20px}
-.card-row{display:flex;align-items:center;gap:18px;margin:28px 0;border-radius:10px;padding:16px;background:#fff;box-shadow:0 6px 20px rgba(16,24,40,0.04)}
+.card-row{display:flex;align-items:center;gap:18px;margin:28px 0;border-radius:10px;padding:16px;background:linear-gradient(135deg, rgba(255,107,107,0.08) 0%, rgba(255,217,61,0.08) 50%, #fff 100%);box-shadow:0 6px 20px rgba(16,24,40,0.04);border-left:4px solid #ff6b6b;transition:all 0.3s ease}
+.dark .card-row{background:linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(255,71,87,0.15) 50%, rgba(26,26,46,0.9) 100%);border-left-color:#ff4757}
 .card-row:hover{
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:0 16px 40px rgba(108,99,255,0.2);
-  background:linear-gradient(135deg, #fff 0%, rgba(108,99,255,0.03) 100%);
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 20px 50px rgba(255,107,107,0.25);
+  background:linear-gradient(135deg, rgba(255,107,107,0.15) 0%, rgba(255,217,61,0.12) 50%, #fff 100%);
   transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.card-row h2{margin-right:12px}
+.dark .card-row:hover{
+  background:linear-gradient(135deg, rgba(255,107,107,0.25) 0%, rgba(255,71,87,0.25) 50%, rgba(26,26,46,0.95) 100%);
+  box-shadow:0 20px 50px rgba(255,71,87,0.3);
+}
+.card-row h2{margin-right:12px;color:#1a1a2e}
+.dark .card-row h2{color:#fff}
 
 /* footer */
 .site-footer{margin-top:36px;background:#0f1724;color:#fff;padding:28px 20px}
