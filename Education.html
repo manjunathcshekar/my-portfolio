@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>My-Portfolio-Education</title>
+</head>
+<body>
+    <header id="site-header" class="nav-wrap">
+        <div class="nav-inner">
+        <a class="brand" href="./index.html">My Portfolio</a>
+    
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+    
+        <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Main navigation">
+            <ul class="nav-list">
+            <li><a class="nav-link" href="./index.html#home">Home</a></li>
+            <li><a class="nav-link" href="./index.html#experience">Experience</a></li>
+            <li><a class="nav-link" href="./index.html#education">Education</a></li>
+            <li><a class="nav-link" href="./index.html#projects">Projects</a></li>
+            <li><a class="nav-link" href="./index.html#contact">Contact</a></li>
+            </ul>
+    
+            <div class="nav-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
+            <a class="btn-resume" href="./MANJUNATH_C_SHEKAR_RESUME.pdf" target="_blank" rel="noopener">Resume</a>
+            </div>
+        </nav>
+        </div>  
+    </header>
+
+    <main>
+        <section class="education-section">
+            <h1>Education</h1>
+            
+            <div class="education-grid">
+                <!-- BNMIT Card -->
+                <div class="education-card" style="--bg-image: url('bnmitbg.png')">
+                    <div class="card-container">
+                        <!-- Background image pseudo-element -->
+                        <div class="card-bg"></div>
+                        
+                        <!-- Logo -->
+                        <div class="card-logo">
+                            <img src="bnmitlogo.png" alt="BNMIT Logo">
+                        </div>
+                        
+                        <!-- Content that appears on hover -->
+                        <div class="card-content">
+                            <h3 class="institution-name">BNM Institute of Technology</h3>
+                            <p class="degree">B.E. in Electronics & Communication</p>
+                            <p class="duration">Batch - 26</p>
+                            <p class="location">Bengaluru, India</p>
+                            <p class="board">Autonomous Affiliated with Visvesvaraya Technological University (VTU)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NCJ Card -->
+                <div class="education-card" style="--bg-image: url('ncjbg.png')">
+                    <div class="card-container">
+                        <div class="card-bg"></div>
+                        <div class="card-logo">
+                            <img src="ncjlogo.png" alt="NCJ Logo">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="institution-name">National College Jayanagar</h3>
+                            <p class="degree">Pre-University</p>
+                            <p class="duration">Batch - 2022</p>
+                            <p class="location">Bengaluru, India</p>
+                            <p class="board">State Board</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANPS Card -->
+                <div class="education-card" style="--bg-image: url('anpsbg.png')">
+                    <div class="card-container">
+                        <div class="card-bg"></div>
+                        <div class="card-logo">
+                            <img src="anpslogo.png" alt="ANPS Logo">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="institution-name">Appollo National Public School</h3>
+                            <p class="degree">Primary & Secondary Education</p>
+                            <p class="duration">Batch - 2020</p>
+                            <p class="location">Bengaluru, India</p>
+                            <p class="board">ICSE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>I'm open for internships, collaborations, and mentoring. Reach out!</p>
+                <ul class="social-list">
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/manjunath-c-shekar-51341a2a3/" target="_blank" rel="noopener">My profile</a></li>
+                    <li>GitHub: <a href="https://github.com/manjunathcshekar" target="_blank" rel="noopener">@manjunathcshekar</a></li>
+                    <li>Email: <a href="mailto:manjunathc349@gmail.com">manjunathc349@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <div class="contact-form">
+                <form action="/action.php" method="post" autocomplete="off">
+                    <label for="name" class="sr-only">Name or Email</label>
+                    <input id="name" name="name" type="text" placeholder="Name or Email" required />
+
+                    <label for="message" class="sr-only">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Message / Query" required></textarea>
+
+                    <button type="submit" class="btn-submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <small>© <span id="year"></span> Manjunath C — Built with HTML & CSS</small>
+        </div>
+    </footer>
+
+    <!-- Tiny JS -->
+    <script>
+        (function () {
+            const header = document.getElementById('site-header');
+            const toggle = document.getElementById('nav-toggle');
+            const menu = document.getElementById('nav-menu');
+            const themeBtn = document.getElementById('theme-toggle');
+
+            // Mobile menu toggle
+            toggle.addEventListener('click', () => {
+                const open = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            // Theme toggle (simple)
+            const stored = localStorage.getItem('theme');
+            if (stored === 'dark') document.documentElement.classList.add('dark');
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Scrolled state
+            const onScroll = () => {
+                if (window.scrollY > 18) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // populate year
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>
