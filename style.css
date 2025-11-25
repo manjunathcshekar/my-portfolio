@@ -882,6 +882,183 @@ input[type="text"],textarea{padding:10px;border-radius:8px;border:1px solid rgba
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Featured Project Card (with background image) */
+.project-card-featured {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project-card-featured:hover {
+  box-shadow: 0 16px 48px rgba(255,107,107,0.25);
+  transform: translateY(-8px);
+}
+
+.dark .project-card-featured:hover {
+  box-shadow: 0 16px 48px rgba(255,71,87,0.25);
+}
+
+/* Card Container for featured */
+.project-card-featured .card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Image for featured card */
+.project-card-featured .card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+.project-card-featured .card-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+/* Logo for featured project */
+.project-card-featured .card-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 4rem;
+  color: #ff6b6b;
+}
+
+.project-card-featured:hover .card-logo,
+.project-card-featured:focus-within .card-logo {
+  transform: translateY(-80px);
+  opacity: 0.3;
+}
+
+/* Featured project content */
+.project-card-featured .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+  color: #fff;
+  text-align: center;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card-featured:hover .card-content,
+.project-card-featured:focus-within .card-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card-featured:hover .card-bg,
+.project-card-featured:focus-within .card-bg {
+  opacity: 1;
+}
+
+/* Featured card content styling */
+.project-card-featured .card-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.project-card-featured .card-content .project-title {
+  font-size: 1rem;
+  color: #ffd93d;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.project-card-featured .card-content .project-description {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.project-card-featured .project-tags {
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.project-card-featured .tag {
+  background: rgba(255,107,107,0.9);
+  transition: all 0.3s ease;
+}
+
+.project-card-featured .tag:hover {
+  background: #ff6b6b;
+  transform: scale(1.1);
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,107,107,0.3);
+  border-color: rgba(255,255,255,0.3);
+}
+
 .dark .project-card {
   background: linear-gradient(135deg, rgba(255,107,107,0.08) 0%, rgba(255,71,87,0.08) 50%, rgba(26,26,46,0.95) 100%);
   border-color: rgba(255,107,107,0.4);
